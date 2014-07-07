@@ -42,6 +42,8 @@
 		41380267196A494300172043 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 41380255196A494300172043 /* UIRefreshControl+AFNetworking.m */; };
 		41380268196A494300172043 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 41380257196A494300172043 /* UIWebView+AFNetworking.m */; };
 		41A5BE42196A58AD0043FAF2 /* StringUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A5BE41196A58AD0043FAF2 /* StringUtility.m */; };
+		41A5BE4A196A83770043FAF2 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A5BE48196A83770043FAF2 /* LoginViewController.m */; };
+		41A5BE4B196A83770043FAF2 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41A5BE49196A83770043FAF2 /* LoginViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +119,9 @@
 		41380257196A494300172043 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
 		41A5BE40196A58AD0043FAF2 /* StringUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringUtility.h; sourceTree = "<group>"; };
 		41A5BE41196A58AD0043FAF2 /* StringUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringUtility.m; sourceTree = "<group>"; };
+		41A5BE47196A83770043FAF2 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ../../../../../Documents/LoginViewController.h; sourceTree = "<group>"; };
+		41A5BE48196A83770043FAF2 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ../../../../../Documents/LoginViewController.m; sourceTree = "<group>"; };
+		41A5BE49196A83770043FAF2 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = ../../../../../Documents/LoginViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +227,7 @@
 		4128CF6E1955247500F4986E /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				41A5BE43196A83550043FAF2 /* Login */,
 				413802291966584400172043 /* AccountCreation */,
 				413802241966582400172043 /* Home */,
 				413802271966582400172043 /* Products */,
@@ -323,6 +329,16 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		41A5BE43196A83550043FAF2 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				41A5BE47196A83770043FAF2 /* LoginViewController.h */,
+				41A5BE48196A83770043FAF2 /* LoginViewController.m */,
+				41A5BE49196A83770043FAF2 /* LoginViewController.xib */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -399,6 +415,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41A5BE4B196A83770043FAF2 /* LoginViewController.xib in Resources */,
 				4138022E1966585C00172043 /* AccountCreateViewController.xib in Resources */,
 				4128CF521955244B00F4986E /* Images.xcassets in Resources */,
 				4128CF441955244B00F4986E /* InfoPlist.strings in Resources */,
@@ -429,6 +446,7 @@
 				41380260196A494300172043 /* AFURLSessionManager.m in Sources */,
 				4138025E196A494300172043 /* AFURLRequestSerialization.m in Sources */,
 				4138022D1966585C00172043 /* AccountCreateViewController.m in Sources */,
+				41A5BE4A196A83770043FAF2 /* LoginViewController.m in Sources */,
 				41A5BE42196A58AD0043FAF2 /* StringUtility.m in Sources */,
 				41380267196A494300172043 /* UIRefreshControl+AFNetworking.m in Sources */,
 				4138025F196A494300172043 /* AFURLResponseSerialization.m in Sources */,

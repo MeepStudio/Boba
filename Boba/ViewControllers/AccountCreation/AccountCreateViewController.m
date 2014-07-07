@@ -97,22 +97,59 @@
 }
 
 /**
- *  the user has finished 
+ *  the user has filled out everything
+ *  check if all the credentials are correct
+ *  if it is, then we will call the PUT request
  */
 - (void)finish {
-    UIAlertView *alert = [[UIAlertView alloc] init];
+    BOOL valid = NO;
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:nil delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
     if (self.nameTextField.text.length < MIN_LENGTH || self.nameTextField.text.length > MAX_LENGTH) {
-        alert.title = @"Wrong Email Length";
-        alert.message = [NSString stringWithFormat:@"Your username must be longer than %d and shorter than %d",MIN_LENGTH-1,MAX_LENGTH-1];
-        return;
+        alert.title = @"Invalid Username Length";
+        alert.message = [NSString stringWithFormat:@"Your Username must be at least %d characters and shorter than %d characters",MIN_LENGTH,MAX_LENGTH];
     }
-    if (self.passwordTextField.text.length < MIN_LENGTH || self.nameTextField.text.length > MAX_LENGTH) {
-        alert.title = @"Wrong Email Length";
-        alert.message = [NSString stringWithFormat:@"Your username must be longer than %d and shorter than %d",MIN_LENGTH-1,MAX_LENGTH-1];
-        return;;
+    else if ([StringUtility checkIfStringContainSpecialCharacter:self.nameTextField.text]) {
+        alert.title = @"Invalid username format";
+        alert.message = @"Your username cannot contain any special characters";
+    }
+    else if ([StringUtility checkIfPhoneNumberIsValid:self.emailTextField.text]) {
+        alert.title = @"Invalid email format";
+        alert.message = @"Your email format is wrong";
+    }
+    else if ([StringUtility checkIfStringContainSpecialCharacter:self.passwordTextField.text]) {
+        alert.title = @"Invalid password format";
+        alert.message = @"Your password cannot contain any special characters";
+    }
+    else if (self.passwordTextField.text.length < MIN_LENGTH || self.passwordTextField.text.length > MAX_LENGTH) {
+        alert.title = @"Invalid Password Length";
+        alert.message = [NSString stringWithFormat:@"Your Password must be at least %d characters and shorter than %d characters",MIN_LENGTH,MAX_LENGTH];
+    }
+    else if (![self.confirmPasswordTextField.text isEqualToString:self.passwordTextField.text]) {
+        alert.title = @"Your password does not match";
+        alert.message = @"Your password does not match";
+    }
+    else if (![StringUtility checkIfPhoneNumberIsValid:self.phoneNumberTextField.text]) {
+        alert.title = @"Invalid Phone Number format";
+        alert.message = @"Your Phone Number must be in this format\n1xxxxxxxx";
+    }
+    else {
+        valid = YES;
+    }
+    
+    if (valid) {
+        NSLog(@"meep");
+    }
+    else {
+        [alert show];
     }
 }
 
+/**
+ *  dismiss the keyboard upon tap on self.view
+ *  sets the currentTextField to nil
+ *  @param touches nil
+ *  @param event   nil
+ */
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
     self.currentTextfield = nil;
@@ -120,6 +157,13 @@
 
 #pragma mark - UITextField Delegate
 
+/**
+ *  sets the next textfield as first responder
+ *
+ *  @param textField the current selected textfield
+ *
+ *  @return YES
+ */
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (textField == self.nameTextField) {
         [self.emailTextField becomeFirstResponder];
@@ -136,6 +180,11 @@
     return YES;
 }
 
+/**
+ *  sets the current textfield
+ *
+ *  @param textField the current textfield;
+ */
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     self.currentTextfield = textField;
     [self keyboardDidShow:nil];
